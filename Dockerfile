@@ -21,7 +21,7 @@ WORKDIR /var/www/html
 COPY . .
 
 RUN cp .env.example .env || true
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader || true
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 COPY docker/nginx/default.conf /etc/nginx/http.d/default.conf
 COPY docker/supervisord.conf /etc/supervisord.conf

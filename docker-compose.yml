@@ -10,6 +10,10 @@ services:
       - mariadb
     volumes:
       - ./:/var/www/html
+    command: >
+      sh -c "if [ ! -f /var/www/html/vendor/autoload.php ]; then
+        composer install --no-interaction --prefer-dist --optimize-autoloader;
+      fi && /usr/bin/supervisord -c /etc/supervisord.conf"
 
   mariadb:
     image: mariadb:11
