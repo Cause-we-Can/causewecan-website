@@ -13,5 +13,6 @@ return [
         'api_key' => env('STORMFORGE_API_KEY'),
         'guild_name' => env('STORMFORGE_GUILD_NAME'),
         'realm' => env('STORMFORGE_REALM'),
+        'region' => env('STORMFORGE_REGION'),
     ],
 ];

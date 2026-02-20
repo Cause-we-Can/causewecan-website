@@ -27,7 +27,7 @@ The root route (`/`) shows blog posts from `blog_posts`.
 - Only users with calendar admin permissions can create events.
 
 ### 4) Discord Role-based Calendar Admin Permissions
-Calendar write permissions are based on Discord roles. The sync bot authenticates only via a bot API key (`DISCORD_BOT_API_KEY`) and does not use a Discord client ID for bot auth:
+Calendar write permissions are based on Discord roles:
 
 - Discord role IDs are configured in `.env` (`DISCORD_ADMIN_ROLE_IDS`).
 - A Discord bot syncs guild member roles into:
@@ -72,9 +72,9 @@ DISCORD_CLIENT_SECRET=
 DISCORD_REDIRECT_URI=http://localhost/auth/discord/callback
 
 # Discord bot + role permissions
-DISCORD_BOT_API_KEY=
-DISCORD_GUILD_ID=1462238148632252436
-DISCORD_ADMIN_ROLE_IDS=1462238620449771594,1462238763072880888
+DISCORD_BOT_TOKEN=
+DISCORD_GUILD_ID=
+DISCORD_ADMIN_ROLE_IDS=123456789012345678,987654321098765432
 DISCORD_SYNC_INTERVAL_SECONDS=300
 
 # Stormforge
@@ -82,8 +82,8 @@ STORMFORGE_API_BASE_URL=https://logs.stormforge.gg/api
 STORMFORGE_ARMORY_BASE_URL=https://logs.stormforge.gg/en
 STORMFORGE_API_KEY=
 STORMFORGE_GUILD_NAME=Cause%20we%20Can
-STORMFORGE_REALM=frostmourne
-
+STORMFORGE_REALM=
+STORMFORGE_REGION=
 ```
 
 ---
@@ -157,9 +157,9 @@ Setup steps:
 
 1. Create Discord application and bot.
 2. Enable Server Members Intent.
-3. Invite bot to your guild/server (ID: `1462238148632252436`).
-4. Put bot API key and guild ID in `.env`.
-5. Define admin role IDs in `DISCORD_ADMIN_ROLE_IDS` (`Guild Master`: `1462238620449771594`, `Guild Officer`: `1462238763072880888`).
+3. Invite bot to your guild.
+4. Put bot token and guild ID in `.env`.
+5. Define admin role IDs in `DISCORD_ADMIN_ROLE_IDS`.
 6. Run `docker compose up --build -d`.
 
 ---
@@ -176,7 +176,7 @@ Useful checks:
 ```bash
 # Check API reachability (example)
 curl -H "Authorization: Bearer <STORMFORGE_API_KEY>" \
-  "https://logs.stormforge.gg/api/guild/roster?guild=Cause%20we%20Can&realm=<realm>"
+  "https://logs.stormforge.gg/api/guild/roster?guild=Cause%20we%20Can&realm=<realm>&region=<region>"
 ```
 
 ---

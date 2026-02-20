@@ -22,6 +22,7 @@ class StormforgeService
             ->get($apiBase.'/guild/roster', [
                 'guild' => config('services.stormforge.guild_name'),
                 'realm' => config('services.stormforge.realm'),
+                'region' => config('services.stormforge.region'),
             ]);
 
         if (! $response->successful()) {
