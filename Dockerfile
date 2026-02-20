@@ -1,6 +1,7 @@
 FROM php:8.3-fpm-alpine
 
 ENV TAR_OPTIONS="--no-same-owner --no-same-permissions"
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN apk add --no-cache \
     nginx \
